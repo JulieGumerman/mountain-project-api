@@ -1,12 +1,22 @@
 import React from 'react';
 import './App.css';
+import { connect } from "react-redux";
 
 function App() {
   return (
     <div className="App">
-      <h1>Want to go climbing this weekend?</h1>
+      <h1>Go climbing!!!</h1>
     </div>
   );
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    routes: state.routes,
+    error: state.error, 
+    isFetching: state.isFetching
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
