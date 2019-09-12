@@ -3,8 +3,9 @@ import './App.css';
 import { connect } from "react-redux";
 
 import { getRoutes } from "./actions/index";
+import RouteInfo from "./components/RouteInfo";
 
-function App({getRoutes}) {
+function App({getRoutes, routes, error, isFetching}) {
 
   useEffect(()=> {
     getRoutes();
@@ -13,6 +14,9 @@ function App({getRoutes}) {
   return (
     <div className="App">
       <h1>Go climbing!!!</h1>
+      <div>
+        {routes.map(route => <RouteInfo route={route}/>)}
+      </div>
     </div>
   );
 }
