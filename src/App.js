@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { connect } from "react-redux";
 
-function App() {
+import { getRoutes } from "./actions/index";
+
+function App({getRoutes}) {
+
+  useEffect(()=> {
+    getRoutes();
+  }, [getRoutes])
+
   return (
     <div className="App">
       <h1>Go climbing!!!</h1>
@@ -19,4 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, {getRoutes})(App);
